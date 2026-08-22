@@ -6,3 +6,5 @@ dist
 VITE_GA_ID=
 VITE_UMAMI_SRC=
 VITE_UMAMI_ID=
+
+.env
