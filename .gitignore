@@ -1,3 +1,8 @@
 node_modules
 dist
 *.local
+
+# analytics (opsional · isi lalu rebuild)
+VITE_GA_ID=
+VITE_UMAMI_SRC=
+VITE_UMAMI_ID=

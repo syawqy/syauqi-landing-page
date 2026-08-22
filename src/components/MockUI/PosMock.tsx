@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { DemoTag } from './DashboardMock';
+import { trackEvent } from '../../lib/analytics';
 
 type Cat = 'Semua' | 'Kopi' | 'Non-Kopi' | 'Snack';
 interface Product { emoji: string; name: string; price: number; cat: Exclude<Cat, 'Semua'> }
@@ -51,6 +52,7 @@ export default function PosMock() {
   const pay = () => {
     if (!cart.length) return;
     setPaid(true);
+    trackEvent('demo_interaction', { mock: 'pos', action: 'pay', value: total });
     setTimeout(() => { setPaid(false); setCart([]); }, 2000);
   };
 

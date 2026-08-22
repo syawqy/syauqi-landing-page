@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DemoTag } from './DashboardMock';
+import { trackEvent } from '../../lib/analytics';
 
 export default function ProfileMock() {
   const [name, setName] = useState('');
@@ -9,6 +10,7 @@ export default function ProfileMock() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setToast(true);
+    trackEvent('demo_interaction', { mock: 'profile', action: 'submit-form' });
     setName('');
     setMsg('');
     setTimeout(() => setToast(false), 2200);

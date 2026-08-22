@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { trackEvent } from '../../lib/analytics';
 
 const PERIODS = ['Hari', 'Minggu', 'Bulan'] as const;
 type Period = (typeof PERIODS)[number];
@@ -31,7 +32,7 @@ export default function DashboardMock() {
           {PERIODS.map(p => (
             <button
               key={p}
-              onClick={() => setPeriod(p)}
+              onClick={() => { setPeriod(p); trackEvent('demo_interaction', { mock: 'dashboard', action: 'filter', value: p }); }}
               className={'pill-' + (p === period ? 'green' : 'blue')}
               style={{ border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
             >

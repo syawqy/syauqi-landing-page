@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DemoTag } from './DashboardMock';
+import { trackEvent } from '../../lib/analytics';
 
 interface Request { id: number; who: string; what: string; status: 'pending' | 'approved' | 'rejected' }
 
@@ -13,6 +14,7 @@ export default function HrisMock() {
 
   const decide = (id: number, status: 'approved' | 'rejected') => {
     setReqs(rs => rs.map(r => r.id === id ? { ...r, status } : r));
+    trackEvent('demo_interaction', { mock: 'hris', action: status });
   };
 
   const pending = reqs.filter(r => r.status === 'pending');

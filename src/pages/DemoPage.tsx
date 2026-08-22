@@ -6,11 +6,18 @@ import { MOCK_MAP, isMockSlug } from '../components/MockUI';
 import { showcases } from '../data/showcases';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { WA_LINK } from '../data/site';
+import { useEffect } from 'react';
+import { trackEvent } from '../lib/analytics';
 
 export default function DemoPage() {
   const { slug = '' } = useParams();
 
-  if (!isMockSlug(slug)) return <Navigate to="/404" replace />;
+  const valid = isMockSlug(slug);
+  useEffect(() => {
+    if (valid) trackEvent('view_demo', { slug });
+  }, [valid, slug]);
+
+  if (!valid) return <Navigate to="/404" replace />;
 
   const meta = showcases.find(s => s.slug === slug)!;
   const Mock = MOCK_MAP[slug];

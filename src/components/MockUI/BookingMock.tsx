@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DemoTag } from './DashboardMock';
+import { trackEvent } from '../../lib/analytics';
 
 type SlotState = 'tersedia' | 'penuh' | 'dipilih';
 interface Slot { time: string; doctor: string; service: string; state: SlotState }
@@ -36,6 +37,9 @@ export default function BookingMock() {
       x.time === time && x.state === 'tersedia' ? { ...x, state: 'dipilih' }
         : x.state === 'dipilih' ? { ...x, state: 'tersedia' } : x
     ));
+    if (slots.find(x => x.time === time)?.state === 'tersedia') {
+      trackEvent('demo_interaction', { mock: 'booking', action: 'book-slot', value: time });
+    }
   };
 
   const left = slots.filter(s => s.state === 'tersedia').length;

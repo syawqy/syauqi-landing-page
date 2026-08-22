@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DemoTag } from './DashboardMock';
+import { trackEvent } from '../../lib/analytics';
 
 interface Prod { name: string; price: string; badge: string; badgeCls: string; grad: string }
 const PRODUCTS: Prod[] = [
@@ -60,7 +61,7 @@ export default function EcommerceMock() {
                 <div style={{ marginTop: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className={p.badgeCls}>{p.badge}</span>
                   <button
-                    onClick={() => setCart(c => c + 1)}
+                    onClick={() => { setCart(c => c + 1); trackEvent('demo_interaction', { mock: 'ecommerce', action: 'add-to-cart', value: p.name }); }}
                     style={addBtn}
                   >+ Keranjang</button>
                 </div>
