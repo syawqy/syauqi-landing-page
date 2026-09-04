@@ -52,7 +52,7 @@ export function initAnalytics() {
       window.dataLayer!.push(args);
     };
     window.gtag('js', new Date());
-    window.gtag('config', ga, { send_page_view: false }); // SPA: kita kirim manual per route
+    window.gtag('config', ga);
   }
 
   const { src, id } = umamiCfg();
@@ -68,9 +68,9 @@ export function initAnalytics() {
 
 /** Page view manual — wajib untuk SPA karena ganti route tidak memuat ulang dokumen. */
 export function trackPageView(path: string, title?: string) {
-  // Cek window.gtag langsung (bukan gaId()) agar tidak ter-tree-shake saat build tanpa VITE_GA_ID.
-  if (window.gtag) {
-    window.gtag('event', 'page_view', { page_path: path, page_title: title });
+  const ga = gaId();
+  if (window.gtag && ga) {
+    window.gtag('config', ga, { page_path: path, page_title: title });
   }
   // Umami melacak page view otomatis via history API.
 }
