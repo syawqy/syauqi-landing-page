@@ -25,7 +25,7 @@ export default function ServicesGrid({ extended = false }: { extended?: boolean 
           <Reveal key={s.title}>
             <div className="svc">
               <div className="ic"><Icon name={s.icon} /></div>
-              <h4>{s.title}</h4>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 700 }}>{s.title}</h3>
               <p>{s.desc}</p>
             </div>
           </Reveal>

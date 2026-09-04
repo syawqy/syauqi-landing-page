@@ -23,7 +23,7 @@ export default function WhyMe() {
                 <Reveal key={c.title}>
                   <div className="svc" style={{ margin: 0 }}>
                     <div className="ic"><Icon name={c.icon} size={20} /></div>
-                    <h4 style={{ fontSize: '.9rem', whiteSpace: 'nowrap' }}>{c.title}</h4>
+                    <h3 style={{ fontSize: '.9rem', fontWeight: 700, whiteSpace: 'nowrap' }}>{c.title}</h3>
                     <p style={{ fontSize: '.82rem' }}>{c.desc}</p>
                   </div>
                 </Reveal>

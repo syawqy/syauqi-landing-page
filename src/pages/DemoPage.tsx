@@ -1,4 +1,5 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
+import { Suspense } from 'react';
 import BrowserFrame from '../components/BrowserFrame';
 import Reveal from '../components/Reveal';
 import { CheckIcon } from '../components/Icon';
@@ -46,7 +47,7 @@ export default function DemoPage() {
 
         <Reveal>
           <div style={{ maxWidth: 620, margin: '0 auto' }}>
-            <BrowserFrame url={meta.url}><Mock /></BrowserFrame>
+            <BrowserFrame url={meta.url}><Suspense fallback={<div style={{ height: 400 }} />}><Mock /></Suspense></BrowserFrame>
             <p style={{ textAlign: 'center', color: 'var(--muted2)', fontSize: 13, marginTop: 14 }}>
               Coba langsung: klik produk, filter data, setujui pengajuan. Semua interaksi nyata di front-end, tanpa server.
             </p>

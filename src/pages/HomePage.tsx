@@ -10,7 +10,7 @@ import { usePageTitle } from '../hooks/usePageTitle';
 export default function HomePage() {
   usePageTitle('Syauqi Fuadi · Jasa IT Consulting & Web Development untuk Bisnis Berkembang');
   return (
-    <>
+    <main>
       <Hero />
       <TechStrip />
       <ShowcaseSection />
@@ -22,6 +22,6 @@ export default function HomePage() {
       <ProcessSteps />
       <WhyMe />
       <CtaContact />
-    </>
+    </main>
   );
 }

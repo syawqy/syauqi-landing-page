@@ -17,7 +17,7 @@ export default function ProcessSteps() {
             <Reveal key={st.n}>
               <div className="step">
                 <span className="n">{st.n}</span>
-                <h4>{st.title}</h4>
+                <h3 style={{ fontSize: '1.02rem', fontWeight: 700, letterSpacing: '-.01em' }}>{st.title}</h3>
                 <p>{st.desc}</p>
               </div>
             </Reveal>

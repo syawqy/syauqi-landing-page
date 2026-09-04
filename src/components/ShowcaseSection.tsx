@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Suspense } from 'react';
 import Reveal from './Reveal';
 import BrowserFrame from './BrowserFrame';
 import { CheckIcon } from './Icon';
@@ -15,7 +16,7 @@ function ShowcaseCard({ s, flip }: { s: (typeof showcases)[number]; flip: boolea
             <Copy s={s} />
           </div>
         )}
-        <BrowserFrame url={s.url}><Mock /></BrowserFrame>
+        <BrowserFrame url={s.url}><Suspense fallback={<div style={{ height: 400 }} />}><Mock /></Suspense></BrowserFrame>
         {flip && (
           <div className="show-copy">
             <Copy s={s} />
